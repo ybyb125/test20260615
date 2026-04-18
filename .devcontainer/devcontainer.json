@@ -31,6 +31,10 @@
 				"ms-dotnettools.csdevkit",
 				"ritwickdey.LiveServer"
 			]
+			,
+			"settings": {
+				"locale": "en"
+			}
 		}
 	}
 	// "postCreateCommand": "curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg > /dev/null"
