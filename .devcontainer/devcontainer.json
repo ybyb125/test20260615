@@ -28,12 +28,13 @@
 			"extensions": [
 				"GitHub.copilot",
 				"ms-dotnettools.csharp",
-				"ms-dotnettools.csdevkit",
+				"ms-dotnettools.csdevkit@1.90.2",
 				"ritwickdey.LiveServer"
 			]
 			,
 			"settings": {
-				"locale": "en"
+				"locale": "en",
+				"extensions.autoUpdate": false
 			}
 		}
 	}
