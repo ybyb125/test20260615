@@ -3,17 +3,38 @@
 {
 	"name": "Python 3",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
+	"image": "mcr.microsoft.com/devcontainers/python:3-3.14-trixie",
+	"features": {
+		"ghcr.io/devcontainers/features/copilot-cli:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/node:2": {
+			"nodeGypDependencies": true,
+			"version": "22",
+			"npmVersion": "none",
+			"pnpmVersion": "latest",
+			"nvmVersion": "latest"
+		},
+		"ghcr.io/devcontainers/features/python:1": {
+			"installTools": true,
+			"version": "3.12"
+		},
+		"ghcr.io/swift-server-community/swift-devcontainer-features/sqlite:1": {},
+		"ghcr.io/va-h/devcontainers-features/uv:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/dotnet:2": {
+			"tabCompletions": true,
+			"version": "6.0"
+		}
+	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-python.python",
-				"ms-toolsai.jupyter",
-				"ms-toolsai.datawrangler",
-				"shd101wyy.markdown-preview-enhanced"
+				"qwtel.sqlite-viewer"
 			]
 		}
-	},
+	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -22,11 +43,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip install requests beautifulsoup4 pandas scrapy",
-	"features": {
-		"ghcr.io/devcontainers/features/azure-cli:1": {},
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
-	}
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
