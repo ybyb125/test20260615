@@ -18,13 +18,16 @@ jobs:
         with:
           python-version: '3.12'
 
+      # 修改點 1：將套件安裝到指定的本地目錄
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          pip install --target=".python_packages/lib/site-packages" -r requirements.txt
 
+      # 修改點 2：加上 scm-do-build-during-deployment 讓 Azure 知道這是 Python 專案
       - name: Deploy to Azure Functions
         uses: Azure/functions-action@v1
         with:
           app-name: gae26111-0615
           package: .
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+          scm-do-build-during-deployment: true
