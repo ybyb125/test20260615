@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quotes Viewer</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    .quote {
+      margin-bottom: 20px;
+      padding: 10px;
+      border-left: 4px solid #0078d4;
+      background-color: #f0f0f0;
+    }
+    .quote .text {
+      font-size: 1.2em;
+      font-style: italic;
+    }
+    .quote .author {
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    .quote .tags {
+      margin-top: 5px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Quotes</h1>
+  <div id="quotes-container">Loading...</div>
+
+  <script>
+    fetch("https://gae26111-0615-gshch9cpach9gad4.southeastasia-01.azurewebsites.net/api/GetQuotes")
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById("quotes-container");
+        container.innerHTML = "";
+
+        data.forEach(item => {
+          const quoteEl = document.createElement("div");
+          quoteEl.className = "quote";
+
+          quoteEl.innerHTML = `
+            <div class="text">“${item.text}”</div>
+            <div class="author">– ${item.author}</div>
+            <div class="tags">Tags: ${item.tags.join(", ")}</div>
+          `;
+
+          container.appendChild(quoteEl);
+        });
+      })
+      .catch(error => {
+        document.getElementById("quotes-container").innerText = "Error loading quotes.";
+        console.error(error);
+      });
+  </script>
+</body>
+</html>
